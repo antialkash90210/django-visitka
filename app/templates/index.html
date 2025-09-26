@@ -9,48 +9,77 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
         .container {
             max-width: 800px;
             margin: 50px auto;
-            padding: 20px;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         h1 {
             color: #333;
             text-align: center;
+            margin-bottom: 30px;
         }
-        .info {
+        .info-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .tech-stack {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
             margin: 20px 0;
         }
-        .contact {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
+        .tech-item {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Добро пожаловать на мой сайт-визитку!</h1>
+        <h1>🚀 Мой сайт-визитка на Django</h1>
         
-        <div class="info">
-            <h2>Обо мне</h2>
-            <p>Это тестовый сайт-визитка, созданный с помощью Django и Docker.</p>
+        <div class="info-section">
+            <h2>О проекте</h2>
+            <p>Этот сайт-визитка создан с использованием Django и развернут в Docker контейнере.</p>
         </div>
 
-        <div class="contact">
-            <h3>Контакты</h3>
-            <p>Email: example@example.com</p>
-            <p>Телефон: +7 (XXX) XXX-XX-XX</p>
+        <div class="info-section">
+            <h2>Технологический стек</h2>
+            <div class="tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Django</span>
+                <span class="tech-item">Docker</span>
+                <span class="tech-item">Docker Compose</span>
+            </div>
         </div>
 
-        <div style="margin-top: 20px; text-align: center;">
-            <p><strong>Сервер запущен в Docker контейнере!</strong></p>
+        <div class="info-section">
+            <h2>Функциональность</h2>
+            <ul>
+                <li>✅ Контейнеризация приложения</li>
+                <li>✅ Автоматическое развертывание</li>
+                <li>✅ Готовность к продакшену</li>
+                <li>✅ Масштабируемая архитектура</li>
+            </ul>
+        </div>
+
+        <div class="info-section">
+            <h2>Статус</h2>
+            <p>🟢 Приложение успешно запущено в Docker контейнере!</p>
+            <p>Время сервера: {% now "H:i, d.m.Y" %}</p>
         </div>
     </div>
 </body>
