@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сайт-визитка</title>
+    <title>Сайт-визитка с PostgreSQL</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
             min-height: 100vh;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 50px auto;
             background: white;
             padding: 30px;
@@ -45,15 +45,32 @@
             border-radius: 20px;
             margin: 5px;
         }
+        .db-info {
+            background: #28a745 !important;
+            border-left-color: #28a745 !important;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .service-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Мой сайт-визитка на Django</h1>
+        <h1>🚀 Мой сайт-визитка на Django + PostgreSQL</h1>
         
         <div class="info-section">
             <h2>О проекте</h2>
-            <p>Этот сайт-визитка создан с использованием Django и развернут в Docker контейнере.</p>
+            <p>Этот сайт-визитка создан с использованием Django, PostgreSQL и развернут в Docker контейнерах.</p>
         </div>
 
         <div class="info-section">
@@ -61,25 +78,46 @@
             <div class="tech-stack">
                 <span class="tech-item">Python</span>
                 <span class="tech-item">Django</span>
+                <span class="tech-item">PostgreSQL</span>
                 <span class="tech-item">Docker</span>
                 <span class="tech-item">Docker Compose</span>
+                <span class="tech-item">pgAdmin</span>
+            </div>
+        </div>
+
+        <div class="info-section db-info">
+            <h2>📊 База данных PostgreSQL</h2>
+            <p>✅ Подключена и работает в отдельном контейнере</p>
+            <p>✅ Автоматические миграции при запуске</p>
+            <p>✅ Данные сохраняются в volumes</p>
+        </div>
+
+        <div class="services">
+            <div class="service-card">
+                <h3>🌐 Django приложение</h3>
+                <p>Порт: 8000</p>
+                <p>Статус: <span style="color: green;">🟢 Работает</span></p>
+            </div>
+            
+            <div class="service-card">
+                <h3>🐘 PostgreSQL</h3>
+                <p>Порт: 5432</p>
+                <p>База: django_visitka</p>
+            </div>
+            
+            <div class="service-card">
+                <h3>📊 pgAdmin</h3>
+                <p>Порт: 5050</p>
+                <p>Email: admin@visitka.com</p>
+                <p>Пароль: adminpassword</p>
             </div>
         </div>
 
         <div class="info-section">
-            <h2>Функциональность</h2>
-            <ul>
-                <li>✅ Контейнеризация приложения</li>
-                <li>✅ Автоматическое развертывание</li>
-                <li>✅ Готовность к продакшену</li>
-                <li>✅ Масштабируемая архитектура</li>
-            </ul>
-        </div>
-
-        <div class="info-section">
-            <h2>Статус</h2>
-            <p>🟢 Приложение успешно запущено в Docker контейнере!</p>
+            <h2>Статус системы</h2>
+            <p>🟢 Все сервисы успешно запущены в Docker контейнерах!</p>
             <p>Время сервера: {% now "H:i, d.m.Y" %}</p>
+            <p>База данных: PostgreSQL</p>
         </div>
     </div>
 </body>

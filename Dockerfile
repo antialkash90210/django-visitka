@@ -1,26 +1,29 @@
-# Dockerfile
 FROM python:3.11-slim
 
-# Устанавливаем зависимости системы
-RUN apt-get update && apt-get install -y \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app
 
-# Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем requirements.txt и устанавливаем зависимости
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Обновляем пакетный менеджер и устанавливаем зависимости более надежно
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    gcc \
+    python3-dev \
+    libpq-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Копируем код приложения
+COPY requirements.txt .
+
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
 COPY ./app /app
 
-# Создаем статические файлы и миграции
-RUN python manage.py collectstatic --noinput
+RUN mkdir -p /app/static /app/media
 
-# Открываем порт
 EXPOSE 8000
 
-# Запускаем приложение
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

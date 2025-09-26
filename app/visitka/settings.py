@@ -48,10 +48,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'visitka.wsgi.application'
 
+# База данных PostgreSQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'django_visitka'),
+        'USER': os.environ.get('POSTGRES_USER', 'django_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'secretpassword'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'db'),
+        'PORT': '5432',
     }
 }
 
